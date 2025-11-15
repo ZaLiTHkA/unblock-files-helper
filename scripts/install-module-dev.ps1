@@ -16,7 +16,7 @@ Expand-Archive -Path $zipPath -DestinationPath $extractPath -Force
 Write-Host "Installing module for current user..." -ForegroundColor Cyan
 if (Test-Path $moduleTarget) {
   Write-Host "Existing module installation found!" -ForegroundColor Yellow
-  if (-not (Read-Host "Replace the existing module installation? (Y/n)").ToLower().StartsWith('y')) {
+  if (-not (Read-Host "Replace the existing module installation? (y/N)").ToLower().StartsWith('y')) {
     Write-Host "Unable to continue, either remove the existing module first or allow this script to overwrite it." -ForegroundColor Red
     return
   }
@@ -29,7 +29,7 @@ if (Test-Path $extractPath) { Remove-Item $extractPath -Recurse -Force }
 
 Write-Host "Installation complete!" -ForegroundColor Green
 
-if (-not (Read-Host "Would you like to import the module into your current session? (Y/n)").ToLower().StartsWith('y')) {
+if (-not (Read-Host "Would you like to import the module into your current session? (y/N)").ToLower().StartsWith('y')) {
   Write-Host "To use this module, execute the following command in any PowerShell session:" -ForegroundColor Green
   Write-Host "  Import-Module UnblockFiles" -ForegroundColor Blue
   return
