@@ -12,27 +12,48 @@ execute the following command in a PowerShell prompt to install it locally:
 irm https://raw.githubusercontent.com/ZaLiTHkA/UnblockFiles/main/install-unblock-module.ps1 | iex
 ```
 
-it will automatically invoke `Import-Module` at the end, so you may execute `Unblock-Files` immediately thereafter. but this is not a persistent change, so to import and use this module again in a new prompt, you will need to execute the following command first:
+once installed, this module may be imported into any PowerShell session with the following command:
 
 ```pwsh
 Import-Module UnblockFiles -Force
 ```
 
-## Module Usage
+> NOTE: this is done automatically at the end of the installation, but it is not a persistent system change. you will need to call this again if you open a new terminal session.
 
-this module is designed to be as flexible as possible, operating from the current working directory by default at runtime. but you may also provide a specific path to start from at launch.
+## Basic Module Usage
+
+by default, this script will operate on your current working directory. this can be changed, but we will get to that later.
+
+the easiest way to use this, is to open a PowerShell session in the directory where you have files that you wish to unlock, and run the following command:
+
+```pwsh
+Unblock-Files
+```
+
+this will find all files and folders in the current working directory, and present a list of checkbox items for you to select.
+
+- navigate with the arrow keys.
+- toggle items with "spacebar".
+- confirm selection with "enter".
+
+if a folder is selected, the script will recurse into that folder and try to "unblock" every file it encounters.
+
+at the end, you will see a message showing how many files were "unblock" in this way.
+
+## Advanced Module Usage
+
+if you cannot open a PowerShell session at the required path, you may provide this path at runtime with the `-Path` argument:
 
 ```pwsh
 Unblock-Files -Path <custom/working/directory>
 ```
 
-when executed, this will first list all files and folders in the working directory. navigate the list with the up and down arrows, and use spacebar to toggle the inclusion of a file or folder.
+> NOTE: this path may be relative or absolute. if it contains spaces, enclose it with 'single quotes'.
 
-- files will be processed directly
-- folders will be processed recursively
-
-if you need to limit the recursion depth in a folder, you may do so with the `-Depth` argument, such as the following which will only recurse 2 levels deep into folders:
+if you need to limit the recursion depth in any folder, you may do so with the `-Depth` argument:
 
 ```pwsh
 Unblock-Files -Depth 2
 ```
+
+> NOTE: this depth check applies from the script's working directory.
