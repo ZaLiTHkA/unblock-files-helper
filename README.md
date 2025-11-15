@@ -9,7 +9,7 @@ this module is not currently published to the PSGallery, it may be one day, but 
 execute the following command in a PowerShell prompt to install it locally:
 
 ```
-irm https://raw.githubusercontent.com/ZaLiTHkA/UnblockFiles/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/ZaLiTHkA/UnblockFiles/main/install-unblock-module.ps1 | iex
 ```
 
 it will automatically invoke `Import-Module` at the end, so you may execute `Unblock-Files` immediately thereafter. but this is not a persistent change, so to import and use this module again in a new prompt, you will need to execute the following command first:

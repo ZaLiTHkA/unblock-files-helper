@@ -52,10 +52,7 @@ if (Test-Path $moduleTarget) {
 }
 
 # Copy only the module folder from inside the archive
-Copy-Item `
-  "$extractPath\UnblockFiles-main\UnblockFiles" `
-  $moduleTarget `
-  -Recurse -Force
+Copy-Item "$extractPath\UnblockFiles-main" $moduleTarget -Recurse -Force
 
 #########################################
 # 5. Load the UnblockFiles module
